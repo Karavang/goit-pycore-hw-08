@@ -1,10 +1,10 @@
 from modules.parse_input import parse_input
-
+from pickleRick import save_data, load_data
 from modules.bookcontacts import Record, AddressBook
 
 
 def main():
-    contacts = AddressBook()
+    contacts = load_data()
     while True:
         command = input("Enter a command: ")
         parsed = parse_input(command)
@@ -63,6 +63,7 @@ def main():
             case "close" | "exit":
                 try:
                     print("Good bye!")
+                    save_data(contacts)
                     break
                 except:
                     print("Failed to close the window")
